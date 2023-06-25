@@ -1,0 +1,50 @@
+/* style.css */
+
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    /* viewport units: vh (viewport height), vw, vmin (smallest between vh & vw) */
+    height: 100vh;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  body {
+    text-align: center;
+  }
+  
+  h1 {
+    margin-top: 30px;
+  }
+  
+  #game-container {
+    margin-top: 50px;
+  }
+  
+  #word-display {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  #guesses-left {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  #lettersButton span {
+    display: inline-block;
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid black;
+    cursor: pointer;
+  }
+  
+  #play-again {
+    margin-top: 20px;
+  }
