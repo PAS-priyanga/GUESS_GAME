@@ -13,8 +13,36 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-image: linear-gradient(to right, rgba(165, 25, 32, 0), rgb(32, 146, 131));
+  }
+  /* Style the button that is used to open and close the collapsible content */
+.rules {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
   }
   
+  .active, .collapsible:hover {
+    background-color: #555;
+  }
+  
+  
+  /* Style the collapsible content. Note: hidden by default */
+  .content {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    background-color: #f1f1f1;
+  }
+
+
+
   body {
     text-align: center;
   }
@@ -48,3 +76,13 @@
   #play-again {
     margin-top: 20px;
   }
+
+  .footer {
+    background-color: #3d6a80;
+    padding: 10px;
+    text-align: center;
+    color: #eee;
+    display: none;
+  }
+
+  
