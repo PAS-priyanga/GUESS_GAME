@@ -24,6 +24,7 @@ const playAgainBtn = document.getElementById("play-again");
 
 /*----- event listeners -----*/
 //sellectall for selecting letters
+letters.forEach(letter => letter.addEventListener("click", updateGuessedletter));
 //start game
 //end game
 //reset
@@ -35,18 +36,40 @@ const playAgainBtn = document.getElementById("play-again");
 // Initialize the game
 function initGame() {
     secretWord = getRandomWord();
+
     guessedLetters = [];
     remainingAttempts = 8;
     // Initialize the guess string with dashes
 let guessString = "-".repeat(secretWord.length);
 console.log(guessString);
 console.log(secretWord.length);
+
+for (let i = 0; i < secretWord.length; i++) {
+    var dash = document.createElement('p');
+    
+    dash.textContent = "_";
+    wordDisplay.appendChild(dash);
+  }
     
   }
 
    //render function()
   //   displaying dash for letters
-   
+  // function for click on letter
+    
+    
+    // secretWord.forEach(function() {
+    //     var dash = document.createElement('p');
+    
+    // dash.textContent = "_";
+        
+    //     wordDisplay.appendChild(dash);
+    //   });
+      
+
+
+
+  
 
   // Function to get a random word
  
@@ -58,9 +81,12 @@ console.log(secretWord.length);
 secretWord = getRandomWord();
   console.log(secretWord);
   // updating of letters guesssed
-  function updateGuessedletter(letter) {
+
+  function updateGuessedletter(event) {console.log(event.target.innerText)
+    
     if (guessedLetter(letter) === includes(secretWord)){correctLetters.push (letter)}else{remainingAttempts-1};
     correctLetters.style.visibility = correctLetters ? "visible" : "hidden";
+
    // for (let i = 0; i < word.length; i++) {
       //if (word[i] === guess) {
         //guessedWord[i] = guess;
