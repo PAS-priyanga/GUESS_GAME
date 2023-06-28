@@ -18,13 +18,16 @@ const correctLetters = [];
 
 /*----- cached elements  ----- to listen to various events*/
 const wordDisplay = document.getElementById("word-display");
-const guessesLeft = document.getElementById("remaining-attempts");
+const guessesLeft = document.getElementById("guess-left");
 const letters = document.querySelectorAll(".letters");
 const playAgainBtn = document.getElementById("play-again");
 
 /*----- event listeners -----*/
 //sellectall for selecting letters
 letters.forEach(letter => letter.addEventListener("click", (event) => { updateGuessedLetter(event) }));
+
+
+
 //start game
 //end game
 //reset
@@ -54,6 +57,11 @@ function initGame() {
 
     guessedLetters = [];
     remainingAttempts = 8;
+    console.log(guessesLeft)
+    guessesLeft.textContent = remainingAttempts;
+    
+   
+    
     // Initialize the guess string with dashes
     let guessString = "-".repeat(secretWord.length);
     console.log(guessString);
@@ -99,23 +107,32 @@ function getRandomWord() {
 
 // updating of letters guesssed
 function updateGuessedLetter(event) {
-    console.log(event.target.innerText)
-    let letter = event.target.innerText.toLowerCase()
+    let trueGuess=false;// asssuming the guess is wrong
+    console.log(event.target.innerText);
+    let letter = event.target.innerText.toLowerCase();
     // find all indexs of a letter in secret word
-    let dashes=document.querySelector("#word-display p").textContent
-    
+    let dashes = [...document.querySelector("#word-display p").textContent];
+console.log(dashes);
     for (let i = 0; i < secretWord.length; i++) {
-        if (secretWord[i] === letter) {
-            guessedLetters.push(i)
+        if(secretWord[i] === letter) {
+            guessedLetters.push(i);
             console.log(guessedLetters);
-            //switch dash to secret letter at index i
-            for(let j=0;j<dashes.length;j++){   
-            dashes[j]=guessedLetters[i]
-            console.log(dashes);
-            }
-        } else { remainingAttempts = remainingAttempts - 1 }
-
+             trueGuess=true;
+        } 
     }
+    
+    if(trueGuess===false){
+        remainingAttempts = remainingAttempts - 1;
+        (console.log(remainingAttempts))
+        guessesLeft.textContent = remainingAttempts;
+    }
+    
+
+    for (let j = 0; j < guessedLetters.length; j++) {
+        dashes[guessedLetters[j]] = secretWord[guessedLetters[j]];
+       
+    }
+    document.querySelector("#word-display p").textContent = dashes.join("");
 }
 
 
