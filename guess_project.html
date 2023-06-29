@@ -2,82 +2,83 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connect 4 Game</title>
-    <!-- include Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
-  
-    <link href="guess_project.css" rel="stylesheet" type="text/css">
-    <script defer src="guess_project.js"></script>
-    <link rel="stylesheet" media="mediatype and|not|only (expressions)" href="print.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connect 4 Game</title>
+  <!-- include Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+
+  <link href="guess_project.css" rel="stylesheet" type="text/css">
+  <script defer src="guess_project.js"></script>
+  <link rel="stylesheet" media="mediatype and|not|only (expressions)" href="print.css">
 </head>
 
 
 <body>
   <h1><img src="https://i0.wp.com/www.jimduggan.org/wp-content/uploads/2016/07/words.jpg?w=1178&ssl=1"></h1>
   <h2>Welcome Wizard</h2>
-  <p> Guess to find yourReward</p>
-  
+
+
 
   <div id="game-container">
 
-    <button id="INSTRUCTION" class="rules">INSTRUCTION</button><div class="content">
-    
-       <p> Words can be from anywhere </p>
-       <p>Player will get 8 life to guess the word</p>
-       <p>Wrong choice of letters will reduce a life </p>
-       <p>Once player completes the level, player will proceed to the next level.</p>
-       <p>There are total of 8 levels</p>
-     </div>
+    <button id="INSTRUCTION" class="rules">INSTRUCTION</button>
+    <div class="content">
+
+      <p> Words can be from anywhere </p>
+      <p>Player will get 8 life to guess the word</p>
+      <p>Wrong choice of letters will reduce a life </p>
+      <p>Once player completes the level, player will proceed to the next level.</p>
+      <p>There are total of 8 levels</p>
+    </div>
 
 
-<div id="right" class="flex-right">
-    <p> level:1</p>
-  </div>
+    <div id="right" class="flex-right">
+      <p id="level">Level 1</p>
+    </div>
     <div id="word-display"></div>
     <div id="guesses-left">Guesses Left: <span id="guess-left"></span></div>
     <div id="lettersButton">
-        <span class="letters" id="a">A</span>
-        <span class="letters" id="b" >B</span>
-        <span class="letters" id="c">C</span>
-        <span class="letters" id="d">D</span>
-        <span class="letters" id="e">E</span>
-        <span class="letters" id="f">F</span>
-        <span class="letters" id="g">G</span>
-        <span class="letters" id="h">H</span>
-        <span class="letters" id="i">I</span>
-        <span class="letters" id="j">J</span>
-        <span class="letters" id="k">K</span>
-        <span class="letters" id="l">L</span>
-        <span class="letters" id="m">M</span>
-        <span class="letters" id="n">N</span>
-        <span class="letters" id="o">O</span>
-        <span class="letters" id="p">P</span>
-        <span class="letters" id="q">Q</span>
-        <span class="letters" id="r">R</span>
-        <span class="letters" id="s">S</span>
-        <span class="letters" id="t">T</span>
-        <span class="letters" id="u">U</span>
-        <span class="letters" id="v">V</span>
-        <span class="letters" id="w">W</span>
-        <span class="letters" id="x">X</span>
-        <span class="letters" id="y">Y</span>
-        <span class="letters" id="z">Z</span>
-        <p> <div id="status"> game in progress </div></p>
-      </div> <button id="Continue">Next Word</button>
-        <button id="play-again">Play Again</button>
-       
-      </div>
-      <div class="footer">
-        <p>Design by Priyanga</p>
-      </div>
-        
+      <span class="letters" id="a">A</span>
+      <span class="letters" id="b">B</span>
+      <span class="letters" id="c">C</span>
+      <span class="letters" id="d">D</span>
+      <span class="letters" id="e">E</span>
+      <span class="letters" id="f">F</span>
+      <span class="letters" id="g">G</span>
+      <span class="letters" id="h">H</span>
+      <span class="letters" id="i">I</span>
+      <span class="letters" id="j">J</span>
+      <span class="letters" id="k">K</span>
+      <span class="letters" id="l">L</span>
+      <span class="letters" id="m">M</span>
+      <span class="letters" id="n">N</span>
+      <span class="letters" id="o">O</span>
+      <span class="letters" id="p">P</span>
+      <span class="letters" id="q">Q</span>
+      <span class="letters" id="r">R</span>
+      <span class="letters" id="s">S</span>
+      <span class="letters" id="t">T</span>
+      <span class="letters" id="u">U</span>
+      <span class="letters" id="v">V</span>
+      <span class="letters" id="w">W</span>
+      <span class="letters" id="x">X</span>
+      <span class="letters" id="y">Y</span>
+      <span class="letters" id="z">Z</span>
+    </div>
+    <div id=statusMsg> game in progress </div>
+    <button id="play-again">Play Again</button>
 
-  
+  </div>
+  <div class="footer">
+    <p>Design by Priyanga</p>
+  </div>
+
+
+
 </body>
 
 </html>

@@ -1,6 +1,6 @@
 /*----- constants -----*/
-const levelOne = ["bite", "blog", "bomb", "brew", "chop", "code", "coke", "deal", "draw", "drag"];
-//const levelTwo = ["youth", "young", "dusty", "dirty", "daisy", "drain", "clean", "crash", "chaos", "cloth", "chuck"];
+const wordSelectorByLevel = [[],["bite", "blog", "bomb", "brew", "chop", "code", "coke", "deal", "draw", "drag"],["youth", "young", "dusty", "dirty", "daisy", "drain", "clean", "crash", "chaos", "cloth", "chuck"], ["yonder", "deploy", "devise", "depart", "carbon", "charge", "comply", "campus", "candle", "cousin"],["delight", "darling", "divorce", "deliver", "counter", "contain", "clarity", "custody", "citizen"],["diagnose", "diplomat", "defiance", "dilution", "colonial", "creative", "creditor", "coupling"],["gladiator", "gradation", "bifurcate", "brutalize", "amplitude", "copyright", "flagstone", "favourite", "awestruck", "breakdown"],["generosity", "graduation", "lumberjack", "binoculars","background", "earthlings", "palindrome", "algorithms", "chlorinate", "compatible"],["countryside", "hydroplanes", "switchboard", "nefariously", "switzerland", "warehousing", "speculation", "sympathized", "geophysical", "atmospheric"];];
+//const levelTwo = ;
 //const levelThree = ["yonder", "deploy", "devise", "depart", "carbon", "charge", "comply", "campus", "candle", "cousin"];
 //const levelFour = ["delight", "darling", "divorce", "deliver", "counter", "contain", "clarity", "custody", "citizen"];
 //const levelFive = ["diagnose", "diplomat", "defiance", "dilution", "colonial", "creative", "creditor", "coupling",];
@@ -11,6 +11,7 @@ const levelOne = ["bite", "blog", "bomb", "brew", "chop", "code", "coke", "deal"
 
 
 /*----- state variables -----*/
+let currentLevel = 1;
 let secretWord;
 let guessedLetters;
 let remainingAttempts;
@@ -21,26 +22,16 @@ const wordDisplay = document.getElementById("word-display");
 const guessesLeft = document.getElementById("guess-left");
 const letters = document.querySelectorAll(".letters");
 const playAgainBtn = document.getElementById("play-again");
+const statusMsg=document.getElementById("statusMsg");
+
 
 /*----- event listeners -----*/
 //sellectall for selecting letters
-letters.forEach(letter => letter.addEventListener("click", handleGuess));
-
-function handleGuess(event) { updateGuessedLetter(event) }
-
-
-
-//start game
-//end game
-//reset
-//instruction
-
-
-/*----- functions -----*/
 //collapasble function from w3
-var coll = document.getElementsByClassName("rules");
-var i;
+function handleGuess(event) { updateGuessedLetter(event) };
 
+
+var coll = document.getElementsByClassName("rules");
 for (i = 0; i < coll.length; i++) {
     coll[i].addEventListener("click", function () {
         this.classList.toggle("active");
@@ -52,8 +43,27 @@ for (i = 0; i < coll.length; i++) {
         }
     });
 }
-// Initialize the game
+
+//start game
+//end game
+//reset
+//instruction
+
+
+
+// Initialize the game  /*----- event listeners -----*/
 function initGame() {
+    letters.forEach(letter => letter.addEventListener("click", handleGuess));
+/*----- functions -----*/
+
+letters.forEach(element => {
+    element.classList.remove("selectedLetters");
+    });
+
+var i;
+var element = document.getElementById("level");
+  element.textContent = "Level "+currentLevel;
+
     secretWord = getRandomWord();
     console.log(secretWord);
 
@@ -75,6 +85,9 @@ function initGame() {
         dash.textContent = dash.textContent+"-";
        
     }
+    while (wordDisplay.firstChild) {
+        wordDisplay.removeChild(wordDisplay.firstChild);
+      }
     wordDisplay.appendChild(dash);
 }
 
@@ -99,9 +112,10 @@ function initGame() {
 // Function to get a random word
 
 function getRandomWord() {
-    const randomIndex = Math.floor(Math.random() * levelOne.length);
+ var currentSetofWordsForLevel=wordSelectorByLevel[currentLevel];
+    const randomIndex = Math.floor(Math.random() * currentSetofWordsForLevel.length);
  
-    return levelOne[randomIndex];
+    return currentSetofWordsForLevel[randomIndex];
     
 }
 // Assign random word to secretWord variable
@@ -121,6 +135,7 @@ console.log(dashes);
             guessedLetters.push(i);
             console.log(guessedLetters);
              trueGuess=true;
+             dashes[i] = secretWord[i];
         } 
     }
     
@@ -131,13 +146,14 @@ console.log(dashes);
     }
     
 
-    for (let j = 0; j < guessedLetters.length; j++) {
-        dashes[guessedLetters[j]] = secretWord[guessedLetters[j]];
+    //for (let j = 0; j < guessedLetters.length; j++) {
+     //   dashes[guessedLetters[j]] = secretWord[guessedLetters[j]];
        
-    }
-    document.querySelector("#word-display p").textContent = dashes.join("");
+   // }
+    document.querySelector("#word-display p").innerHTML= dashes.join("");
    event.target.removeEventListener("click", handleGuess)
    event.target.classList.add("selectedLetters");
+   checkIfPlayerWon();
 }
 
 // guessedLetters.removeEventListener("click", (event) => { updateGuessedLetter(event)})
@@ -160,12 +176,35 @@ console.log(dashes);
 // function endGame() {if 
 //     wordDisplay.textContent = secretWords{}}
 
+function checkIfPlayerWon(){
 
+
+    if (remainingAttempts === 0)
+    {
+    //player lost
+   
+   statusMsg.textContent= "Game Over! You lost."
+    currentLevel = 1;
+    }
+    else if(guessedLetters.length === secretWord.length)
+    {
+        statusMsg.textContent = "Congratulations! You won! The word is "+secretWord;
+        
+    currentLevel = currentLevel + 1;
+  
+initGame() 
+    }
+}
 
 
 // Initialize the game on page load
 window.addEventListener("load", initGame);
-playAgainBtn.addEventListener("click", initGame);
+function playAgain() 
+{
+currentLevel = 1;
+initGame();
+}
+playAgainBtn.addEventListener("click", playAgain);
 
 // initGame()
 
@@ -184,10 +223,6 @@ playAgainBtn.addEventListener("click", initGame);
 
 
 
-
-
-
-
 // function grayOutspan() {
 //     var div = document.getElementById("letters");
 //     div.classList.add("grayed-out");
@@ -197,13 +232,6 @@ playAgainBtn.addEventListener("click", initGame);
 //     span.disabled = true;
 //   }
   
-
-
-
-
-
-
-
 
 // function updateGuessedletter(letter) {
 //     if (secretWord.includes(letter.target.innerText)) { correctLetters.push(letter) }
