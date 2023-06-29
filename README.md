@@ -24,7 +24,8 @@ CSS
 Javascript
 
 Getting Started
-
+click on the link to play the game
+https://pas-priyanga.github.io/GUESS_GAME/
 
 Next Steps:
 To add animation effect.
