@@ -18,12 +18,12 @@
   /* Style the button that is used to open and close the collapsible content */
 .rules {
     background-color: #eee;
-    color: #444;
+    color: #7ad498;
     cursor: pointer;
     padding: 18px;
     width: 100%;
     border: none;
-    text-align: left;
+    text-align: center;
     outline: none;
     font-size: 15px;
   }
@@ -31,7 +31,8 @@
   .active, .collapsible:hover {
     background-color: #555;
   }
-  
+  h1{background-repeat: no-repeat;
+    background-size:100% 100%;}
   
   /* Style the collapsible content. Note: hidden by default */
   .content {
@@ -73,16 +74,14 @@
     cursor: pointer;
   }
   
-  #play-again {
-    margin-top: 20px;
-  }
-
-  .footer {
-    background-color: #3d6a80;
-    padding: 10px;
-    text-align: center;
-    color: #eee;
-    display: none;
-  }
+   .selectedLetters{color:gray;
+  border:2px solid gray;}  
 
   
+  
+
+
+
+
+
+

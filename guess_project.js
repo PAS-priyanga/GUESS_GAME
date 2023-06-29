@@ -24,7 +24,9 @@ const playAgainBtn = document.getElementById("play-again");
 
 /*----- event listeners -----*/
 //sellectall for selecting letters
-letters.forEach(letter => letter.addEventListener("click", (event) => { updateGuessedLetter(event) }));
+letters.forEach(letter => letter.addEventListener("click", handleGuess));
+
+function handleGuess(event) { updateGuessedLetter(event) }
 
 
 
@@ -107,6 +109,7 @@ function getRandomWord() {
 
 // updating of letters guesssed
 function updateGuessedLetter(event) {
+    
     let trueGuess=false;// asssuming the guess is wrong
     console.log(event.target.innerText);
     let letter = event.target.innerText.toLowerCase();
@@ -133,10 +136,67 @@ console.log(dashes);
        
     }
     document.querySelector("#word-display p").textContent = dashes.join("");
+   event.target.removeEventListener("click", handleGuess)
+   event.target.classList.add("selectedLetters");
 }
 
+// guessedLetters.removeEventListener("click", (event) => { updateGuessedLetter(event)})
+
+// letters.forEach(letter => letter.removeEventListener("click", (event) => { updateGuessedLetter(event) }));
+// 
+
+//exit()
 
 
+// Check if the game is won or lost
+// function checkGameStatus() {
+//   if (guessedLetters.length === secretWord.length) {
+//     endGame("Congratulations! You won!. Complete rest of the words to move to next level");
+//   } else if (remainingAttempts === 0) {
+//     endGame("Game over! You lost. Try again");
+//   }
+// }
+
+// function endGame() {if 
+//     wordDisplay.textContent = secretWords{}}
+
+
+
+
+// Initialize the game on page load
+window.addEventListener("load", initGame);
+playAgainBtn.addEventListener("click", initGame);
+
+// initGame()
+
+
+
+
+// if (remainingAttempts < 1) {
+//     remainingAttempts.innerHTML = "Game Over";
+//   }
+//   for (let i = 0; i < secretWord.length; i++) {
+//     if (cguessedLetters.length === secretWord.length) {
+//       #status.innerHTML = "You Win!";
+//     }
+//   }
+// }
+
+
+
+
+
+
+
+// function grayOutspan() {
+//     var div = document.getElementById("letters");
+//     div.classList.add("grayed-out");
+//   }
+  //function disableButton() {
+//     document.querySelectorAll(letters);
+//     span.disabled = true;
+//   }
+  
 
 
 
@@ -182,4 +242,3 @@ console.log(dashes);
 //restart enabling all letters
 //message display winning or loosing
 //level movement
-initGame()
