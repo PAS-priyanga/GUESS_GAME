@@ -15,7 +15,8 @@ At any point during the game, the player can choose to play again, which resets 
 
 
 Guess.Game.Welcome Wizard: Screenshot
-<img src="http://127.0.0.1:5500/guess_project.html"/>
+<img src="destop.jpg"/>
+<img src="mobile.jpg"/>
 
 Technology Used:
 HTML
