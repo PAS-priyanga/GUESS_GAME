@@ -1,5 +1,5 @@
 /*----- constants -----*/
-const wordSelectorByLevel = [[],["bite", "blog", "bomb", "brew", "chop", "code", "coke", "deal", "draw", "drag"],["youth", "young", "dusty", "dirty", "daisy", "drain", "clean", "crash", "chaos", "cloth", "chuck"], ["yonder", "deploy", "devise", "depart", "carbon", "charge", "comply", "campus", "candle", "cousin"],["delight", "darling", "divorce", "deliver", "counter", "contain", "clarity", "custody", "citizen"],["diagnose", "diplomat", "defiance", "dilution", "colonial", "creative", "creditor", "coupling"],["gladiator", "gradation", "bifurcate", "brutalize", "amplitude", "copyright", "flagstone", "favourite", "awestruck", "breakdown"],["generosity", "graduation", "lumberjack", "binoculars","background", "earthlings", "palindrome", "algorithms", "chlorinate", "compatible"],["countryside", "hydroplanes", "switchboard", "nefariously", "switzerland", "warehousing", "speculation", "sympathized", "geophysical", "atmospheric"];];
+const wordSelectorByLevel = [[],["bite", "blog", "bomb", "brew", "chop", "code", "coke", "deal", "draw", "drag"],["youth", "young", "dusty", "dirty", "daisy", "drain", "clean", "crash", "chaos", "cloth", "chuck"], ["yonder", "deploy", "devise", "depart", "carbon", "charge", "comply", "campus", "candle", "cousin"],["delight", "darling", "divorce", "deliver", "counter", "contain", "clarity", "custody", "citizen"],["diagnose", "diplomat", "defiance", "dilution", "colonial", "creative", "creditor", "coupling"],["gladiator", "gradation", "bifurcate", "brutalize", "amplitude", "copyright", "flagstone", "favourite", "awestruck", "breakdown"],["generosity", "graduation", "lumberjack", "binoculars","background", "earthlings", "palindrome", "algorithms", "chlorinate", "compatible"],["countryside", "hydroplanes", "switchboard", "nefariously", "switzerland", "warehousing", "speculation", "sympathized", "geophysical", "atmospheric"]];
 //const levelTwo = ;
 //const levelThree = ["yonder", "deploy", "devise", "depart", "carbon", "charge", "comply", "campus", "candle", "cousin"];
 //const levelFour = ["delight", "darling", "divorce", "deliver", "counter", "contain", "clarity", "custody", "citizen"];
@@ -190,11 +190,12 @@ function checkIfPlayerWon(){
     {
         statusMsg.textContent = "Congratulations! You won! The word is "+secretWord;
         
-    currentLevel = currentLevel + 1;
-  
+    currentLevel = currentLevel + 1; 
+   
 initGame() 
     }
 }
+
 
 
 // Initialize the game on page load
