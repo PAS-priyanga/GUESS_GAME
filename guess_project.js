@@ -135,6 +135,7 @@ for (i = 0; i < coll.length; i++) {
 // Initialize the game  /*----- event listeners -----*/
 function initGame() {
     letters.forEach((letter) => letter.addEventListener("click", handleGuess));
+
     /*----- functions -----*/
 
     letters.forEach((element) => {
@@ -177,7 +178,7 @@ function getRandomWord() {
 
     return currentSetofWordsForLevel[randomIndex];
 }
-// Assign random word to secretWord variable
+
 
 // updating of letters guesssed
 function updateGuessedLetter(event) {
@@ -208,7 +209,7 @@ function updateGuessedLetter(event) {
     checkIfPlayerWon();
 }
 
-// winning function
+//winning function
 function checkIfPlayerWon() {
     if (remainingAttempts === 0) {
         //player lost
@@ -218,12 +219,18 @@ function checkIfPlayerWon() {
     } else if (guessedLetters.length === secretWord.length) {
         statusMsg.textContent =
             "Congratulations! You won! The word is " + secretWord;
+        if (currentLevel === 8) { currentLevel = 1; } else {
+            currentLevel = currentLevel + 1;
+        }
 
-        currentLevel = currentLevel + 1;
 
         initGame();
     }
 }
+
+
+
+
 
 // Initialize the game on page load
 window.addEventListener("load", initGame);
@@ -234,3 +241,5 @@ function playAgain() {
     initGame();
 }
 playAgainBtn.addEventListener("click", playAgain);
+
+
